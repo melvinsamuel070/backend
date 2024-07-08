@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('build') {  // Changed 'Build' to 'build'
+            steps {
+                script {
+                    def dockerImage = docker.build('jenkins:1')
+                    dockerImage.push()
+                }
+            }
+        }
+    }
+}
